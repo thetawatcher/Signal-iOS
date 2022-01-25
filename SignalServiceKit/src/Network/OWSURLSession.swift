@@ -374,6 +374,13 @@ public class OWSURLSession: NSObject {
 
         request.httpBody = body
         request.httpShouldHandleCookies = httpShouldHandleCookies.get()
+        Logger.info("\(request.httpMethod ?? "") \(String(describing: request.url))")
+        Logger.info("HEADERS \n \(String(describing: request.allHTTPHeaderFields))")
+//        if request.httpBody != nil {
+//            let str = String(decoding: request.httpBody!, as: UTF8.self)
+//            Logger.info("BODY \n \(str)")
+//        }
+        
         return request
     }
 
@@ -726,6 +733,7 @@ public extension OWSURLSession {
 
         let (promise, resolver) = Promise<OWSHTTPResponse>.pending()
         var requestConfig: RequestConfig?
+        
         let task = session.dataTask(with: request) { (responseData: Data?, _: URLResponse?, _: Error?) in
             guard let requestConfig = requestConfig else {
                 owsFailDebug("Missing requestConfig.")

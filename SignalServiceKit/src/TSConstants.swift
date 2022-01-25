@@ -154,17 +154,27 @@ public class TSConstants: NSObject {
 
 private class TSConstantsProduction: TSConstantsProtocol {
 
-    public let textSecureWebSocketAPI = "wss://textsecure-service.whispersystems.org/v1/websocket/"
-    public let textSecureServerURL = "https://textsecure-service.whispersystems.org/"
-    public let textSecureCDN0ServerURL = "https://cdn.signal.org"
-    public let textSecureCDN2ServerURL = "https://cdn2.signal.org"
-    public let contactDiscoveryURL = "https://api.directory.signal.org"
-    public let keyBackupURL = "https://api.backup.signal.org"
-    public let storageServiceURL = "https://storage.signal.org"
-    public let sfuURL = "https://sfu.voip.signal.org"
+//    public let textSecureWebSocketAPI = "wss://textsecure-service.whispersystems.org/v1/websocket/"
+//    public let textSecureServerURL = "https://textsecure-service.whispersystems.org/"
+//    public let textSecureCDN0ServerURL = "https://cdn.signal.org"
+//    public let textSecureCDN2ServerURL = "https://cdn2.signal.org"
+//    public let contactDiscoveryURL = "https://api.directory.signal.org"
+//    public let keyBackupURL = "https://api.backup.signal.org"
+//    public let storageServiceURL = "https://storage.signal.org"
+//    public let sfuURL = "https://sfu.voip.signal.org"
     public let kUDTrustRoot = "BXu6QIKVz5MA8gstzfOgRQGqyLqOwNKHL6INkv3IHWMF"
+    
+    public let textSecureWebSocketAPI = "ws://signal.dichviet.com:8080/v1/websocket/"
+    public let textSecureServerURL = "http://signal.dichviet.com:8080/"
+    public let textSecureCDN0ServerURL = "https://signal_attachments.storage.googleapis.com"
+    public let textSecureCDN2ServerURL = "https://signal_attachments.storage.googleapis.com"
+    public let contactDiscoveryURL = "http://api.directory.signal.dichviet.com:8080"
+    public let keyBackupURL = "http://api.backup.signal.dichviet.com:8080"
+    public let storageServiceURL = "http://storage.signal.dichviet.com:8080"
+    public let sfuURL = "http://sfu.voip.signal.dichviet.com:8080"
 
-    public let censorshipReflectorHost = "europe-west1-signal-cdn-reflector.cloudfunctions.net"
+//    public let censorshipReflectorHost = "europe-west1-signal-cdn-reflector.cloudfunctions.net"
+    public let censorshipReflectorHost = "europe-west1-signal-cdn-reflector.signal.dichviet.com:8080"
 
     public let serviceCensorshipPrefix = "service"
     public let cdn0CensorshipPrefix = "cdn"
@@ -191,6 +201,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
     public let keyBackupPreviousEnclaves = [KeyBackupEnclave]()
 
     public let applicationGroup = "group.org.whispersystems.signal.group"
+
 
     // We need to discard all profile key credentials if these values ever change.
     // See: GroupsV2Impl.verifyServerPublicParams(...)

@@ -204,7 +204,7 @@ public class OWSAttachmentUploadV2: NSObject {
                 return (form, attachmentData)
             }
         }.then(on: Self.serialQueue) { (form: OWSUploadFormV2, attachmentData: Data) -> Promise<String> in
-            let uploadUrlPath = "attachments/"
+            let uploadUrlPath = ""
             return OWSUpload.uploadV2(data: attachmentData,
                                       uploadForm: form,
                                       uploadUrlPath: uploadUrlPath,
@@ -387,6 +387,9 @@ public class OWSAttachmentUploadV2: NSObject {
             }
             headers["Content-Length"] = "0"
             headers["Content-Type"] = OWSMimeTypeApplicationOctetStream
+            headers["host"] = "signal_attachments.storage.googleapis.com"
+            headers["x-goog-content-length-range"] = "1,1000000"
+            headers["x-goog-resumable"] = "start"
 
             let urlSession = OWSUpload.cdnUrlSession(forCdnNumber: form.cdnNumber)
             let body = "".data(using: .utf8)
@@ -611,6 +614,9 @@ public class OWSAttachmentUploadV2: NSObject {
             var headers = [String: String]()
             headers["Content-Length"] = "0"
             headers["Content-Range"] = "bytes */\(OWSFormat.formatInt(uploadV3Metadata.dataLength))"
+            headers["host"] = "signal_attachments.storage.googleapis.com"
+            headers["x-goog-content-length-range"] = "1,1000000"
+            headers["x-goog-resumable"] = "start"
 
             let urlSession = OWSUpload.cdnUrlSession(forCdnNumber: form.cdnNumber)
 
